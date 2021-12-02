@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
   end
   config.vm.provision "shell", inline: <<-SHELL
     # install a k3s cluster
-    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.19.2+k3s1 K3S_KUBECONFIG_MODE="644" sh -
+    curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION=v1.19.3+k3s1 K3S_KUBECONFIG_MODE="644" sh -
     # install Helm
     curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
   SHELL
