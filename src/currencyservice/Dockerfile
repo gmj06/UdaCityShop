@@ -30,15 +30,16 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # RUN npm install --only=production
-RUN npm install 
+RUN npm ci 
 
-FROM base
+# FROM base
+# WORKDIR /usr/src/app
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.6 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
 
-WORKDIR /usr/src/app
+# WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/node_modules ./node_modules
 
