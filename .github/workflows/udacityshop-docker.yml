@@ -68,6 +68,5 @@ jobs:
         with:
           context: src/currencyservice
           file: src/currencyservice/Dockerfile
-          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/currencyservice:latest
