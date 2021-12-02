@@ -15,9 +15,9 @@ jobs:
     ## Configure the operating system the workflow should run on.
     ## In this case, the job on Ubuntu
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version: ['2.7','3.10']
+    # strategy:
+    #   matrix:
+    #     python-version: ['2.7','3.10']
     ## Define a sequence of steps to be executed
     steps:
       ## Use the public `checkout` actoin  in version v2
@@ -33,41 +33,41 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Set up Python 
-        uses: actions/setup-python@v2
-        with:
-            python-version: ${{ matrix.python-version }}
+      # - name: Set up Python 
+      #   uses: actions/setup-python@v2
+      #   with:
+      #       python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
       - name: Build and push frontend image
         uses: docker/build-push-action@v2
         with:
-          context: ./src/frontend
-          file: ./src/frontend/Dockerfile
+          context: src/frontend
+          file: src/frontend/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/frontend:latest
       - name: Build and push productcatalogservice image
         uses: docker/build-push-action@v2
         with:
-          context: ./src/productcatalogservice
-          file: ./src/productcatalogservice/Dockerfile
+          context: src/productcatalogservice
+          file: src/productcatalogservice/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/productcatalogservice:latest
       - name: Build and push adservice image
         uses: docker/build-push-action@v2
         with:
-          context: ./src/adservice
-          file: ./src/adservice/Dockerfile
+          context: src/adservice
+          file: src/adservice/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/adservice:latest
       - name: Build and push currencyservice image
         uses: docker/build-push-action@v2
         with:
-          context: ./src/currencyservice
-          file: ./src/currencyservice/Dockerfile
+          context: src/currencyservice
+          file: src/currencyservice/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/currencyservice:latest
