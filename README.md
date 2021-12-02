@@ -24,3 +24,4 @@ To deploy this application to a Kubernetes cluster use the following command:
 kubectl apply -f kubernetes-manifests/dev/
 ```
  **Note**: The manifests should be updated to reference existing Docker images for each microservice.
+ 
