@@ -16,6 +16,8 @@ FROM node:12-alpine as base
 
 FROM base as builder
 
+FROM python:3.7-alpine
+
 # Some packages (e.g. @google-cloud/profiler) require additional
 # deps for post-install scripts
 RUN apk add --update --no-cache \

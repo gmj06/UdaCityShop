@@ -1,7 +1,7 @@
 kind: Deployment
 metadata:
   name: frontend
-  namespace: dev
+  namespace: prod
 spec:
   selector:
     matchLabels:

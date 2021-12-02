@@ -55,14 +55,6 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/productcatalogservice:latest
-      - name: Build and push currencyservice image
-        uses: docker/build-push-action@v2
-        with:
-          context: ./src/currencyservice
-          file: ./src/currencyservice/Dockerfile
-          platforms: linux/amd64,linux/arm64
-          push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/currencyservice:latest
       - name: Build and push adservice image
         uses: docker/build-push-action@v2
         with:
@@ -71,3 +63,11 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/adservice:latest
+      - name: Build and push currencyservice image
+        uses: docker/build-push-action@v2
+        with:
+          context: ./src/currencyservice
+          file: ./src/currencyservice/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/currencyservice:latest
