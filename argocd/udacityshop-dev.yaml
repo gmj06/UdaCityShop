@@ -1,5 +1,3 @@
-# Some thoughtful comment
-#{{- $root := .Values -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -12,7 +10,9 @@ spec:
   project: default
   source:
     path: kubernetes-manifests/dev
-    repoURL: https://github.com/gmj06/UdaCityShop
+    repoURL: https://github.com/gmj06/UdaCityShop.git
     targetRevision: HEAD
   syncPolicy: 
-    automated: {}
+    automated: 
+      prune: true
+      selfHeal: true
