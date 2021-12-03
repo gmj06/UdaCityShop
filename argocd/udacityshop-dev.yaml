@@ -1,3 +1,5 @@
+# Some thoughtful comment
+#{{- $root := .Values -}}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:

@@ -22,7 +22,8 @@ FROM base as builder
 # deps for post-install scripts
 RUN apk update
 RUN apk add --update --no-cache \
-    curl py-pip \
+    #curl py-pip \
+    python3 \
     make \
     g++
 
@@ -30,11 +31,10 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-# RUN npm install --only=production
-RUN npm ci 
+RUN npm install --only=production
+
 
 FROM base
-# WORKDIR /usr/src/app
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.6 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
