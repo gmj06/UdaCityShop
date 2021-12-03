@@ -16,12 +16,12 @@ spec:
         - name: server
           image: gmj06/frontend:latest
           ports:
-          - containerPort: 8081
+          - containerPort: 8080
           readinessProbe:
             initialDelaySeconds: 10
             httpGet:
               path: "/_healthz"
-              port: 8081
+              port: 8080
               httpHeaders:
               - name: "Cookie"
                 value: "shop_session-id=x-readiness-probe"
@@ -29,7 +29,7 @@ spec:
             initialDelaySeconds: 10
             httpGet:
               path: "/_healthz"
-              port: 8081
+              port: 8080
               httpHeaders:
               - name: "Cookie"
                 value: "shop_session-id=x-liveness-probe"
@@ -37,9 +37,9 @@ spec:
           - name: PORT
             value: "8081"
           - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice:3551"
+            value: "productcatalogservice:3550"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7001"
+            value: "currencyservice:7000"
           - name: AD_SERVICE_ADDR
             value: "adservice:9556"
           resources:
@@ -54,11 +54,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: prod
 spec:
   type: ClusterIP
   selector:
     app: frontend
   ports:
   - name: http
-    port: 8081
+    port: 80
     targetPort: 8080

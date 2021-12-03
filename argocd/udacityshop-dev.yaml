@@ -5,12 +5,12 @@ metadata:
   namespace: argocd
 spec:
   destination:
-    namespace: default
+    namespace: dev
     server: https://kubernetes.default.svc
   project: default
   source:
     path: kubernetes-manifests/dev
-    repoURL: https://github.com/gmj06/UdaCityShop.git
+    repoURL: https://github.com/gmj06/UdaCityShop
     targetRevision: HEAD
   syncPolicy: 
     automated: 
