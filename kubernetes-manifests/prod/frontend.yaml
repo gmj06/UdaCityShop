@@ -16,12 +16,12 @@ spec:
         - name: server
           image: gmj06/frontend:latest
           ports:
-          - containerPort: 8080
+          - containerPort: 8081
           readinessProbe:
             initialDelaySeconds: 10
             httpGet:
               path: "/_healthz"
-              port: 8080
+              port: 8081
               httpHeaders:
               - name: "Cookie"
                 value: "shop_session-id=x-readiness-probe"
@@ -29,19 +29,19 @@ spec:
             initialDelaySeconds: 10
             httpGet:
               path: "/_healthz"
-              port: 8080
+              port: 8081
               httpHeaders:
               - name: "Cookie"
                 value: "shop_session-id=x-liveness-probe"
           env:
           - name: PORT
-            value: "8080"
+            value: "8081"
           - name: PRODUCT_CATALOG_SERVICE_ADDR
-            value: "productcatalogservice:3550"
+            value: "productcatalogservice:3551"
           - name: CURRENCY_SERVICE_ADDR
-            value: "currencyservice:7000"
+            value: "currencyservice:7001"
           - name: AD_SERVICE_ADDR
-            value: "adservice:9555"
+            value: "adservice:9556"
           resources:
             requests:
               cpu: 100m
@@ -61,4 +61,4 @@ spec:
   ports:
   - name: http
     port: 80
-    targetPort: 8080
+    targetPort: 8081

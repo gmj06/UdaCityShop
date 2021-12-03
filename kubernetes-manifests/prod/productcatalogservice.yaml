@@ -18,16 +18,16 @@ spec:
       - name: server
         image: gmj06/productcatalogservice:latest
         ports:
-        - containerPort: 3550
+        - containerPort: 3551
         env:
         - name: PORT
-          value: "3550"
+          value: "3551"
         readinessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:3550"]
+            command: ["/bin/grpc_health_probe", "-addr=:3551"]
         livenessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:3550"]
+            command: ["/bin/grpc_health_probe", "-addr=:3551"]
         resources:
           requests:
             cpu: 100m
@@ -46,5 +46,5 @@ spec:
     app: productcatalogservice
   ports:
   - name: grpc
-    port: 3550
-    targetPort: 3550
+    port: 3551
+    targetPort: 3551

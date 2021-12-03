@@ -16,19 +16,19 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: {{ IMAGE }}
+        image: gmj06/currencyservice:latest
         ports:
         - name: grpc
-          containerPort: 7000
+          containerPort: 7001
         env:
         - name: PORT
-          value: "7000"
+          value: "7001"
         readinessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7000"]
+            command: ["/bin/grpc_health_probe", "-addr=:7001"]
         livenessProbe:
           exec:
-            command: ["/bin/grpc_health_probe", "-addr=:7000"]
+            command: ["/bin/grpc_health_probe", "-addr=:7001"]
         resources:
           requests:
             cpu: 100m
@@ -47,5 +47,5 @@ spec:
     app: currencyservice
   ports:
   - name: grpc
-    port: 7000
-    targetPort: 7000
+    port: 7001
+    targetPort: 7001
