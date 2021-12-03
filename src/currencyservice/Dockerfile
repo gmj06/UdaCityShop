@@ -41,7 +41,7 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.3.6 && \
 
 # WORKDIR /usr/src/app
 
-COPY --from=builder /usr/src/app/node_modules ./node_modules
+#COPY --from=builder /usr/src/app/node_modules ./node_modules
 
 COPY . .
 
