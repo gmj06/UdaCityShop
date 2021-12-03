@@ -16,12 +16,13 @@ FROM node:12-alpine as base
 
 FROM base as builder
 
-FROM python:3.7-alpine
+#FROM python:3.7-alpine
 
 # Some packages (e.g. @google-cloud/profiler) require additional
 # deps for post-install scripts
+RUN apk update
 RUN apk add --update --no-cache \
-    python \
+    curl py-pip \
     make \
     g++
 
@@ -32,16 +33,16 @@ COPY package*.json ./
 # RUN npm install --only=production
 RUN npm ci 
 
-# FROM base
+FROM base
 # WORKDIR /usr/src/app
 
 RUN GRPC_HEALTH_PROBE_VERSION=v0.3.6 && \
     wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
 
-# WORKDIR /usr/src/app
+WORKDIR /usr/src/app
 
-#COPY --from=builder /usr/src/app/node_modules ./node_modules
+COPY --from=builder /usr/src/app/node_modules ./node_modules
 
 COPY . .
 
