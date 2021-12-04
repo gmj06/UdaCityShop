@@ -1,0 +1,87 @@
+##  Named of the workflow.
+name: Uda'CityShop [sha tag] - Package with Docker
+
+## Set the trigger policy.
+## In this case, the workflow is execute on a `push` event,
+## or when a new commit is pushed to the repository
+on:
+  push:
+    branches: [main]
+
+## List the steps to be executed by the workflow
+jobs:
+  ## Set the name of the job
+  docker:
+    ## Configure the operating system the workflow should run on.
+    ## In this case, the job on Ubuntu
+    runs-on: ubuntu-latest
+    
+    ## Define a sequence of steps to be executed
+    steps:
+      ## Use the public `checkout` actoin  in version v2
+      ## to checkout the existing code in the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+       -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          # list of Docker images to use as base name for tags
+          images: |
+            gmj06/adservice
+            gmj06/productcatalogservice
+            gmj06/currencyservice
+            gmj06/frontend
+          # generate Docker tags based on the following events/attributes
+          tags: |
+            type=sha
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push productcatalogservice image
+        uses: docker/build-push-action@v2
+        with:
+          context: src/productcatalogservice/
+          file: src/productcatalogservice/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push adservice image
+        uses: docker/build-push-action@v2
+        with:
+          context: src/adservice/
+          file: src/adservice/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push currencyservice image
+        uses: docker/build-push-action@v2
+        with:
+          context: src/currencyservice/
+          file: src/currencyservice/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v2
+        with:
+          context: src/frontend/
+          file: src/frontend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
