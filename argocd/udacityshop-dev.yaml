@@ -12,7 +12,5 @@ spec:
     path: kubernetes-manifests/dev
     repoURL: https://github.com/gmj06/UdaCityShop
     targetRevision: HEAD
-  syncPolicy: 
-    automated: 
-      prune: true
-      selfHeal: true
+  syncPolicy:
+    automated: {}
