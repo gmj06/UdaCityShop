@@ -29,10 +29,10 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
+            gmj06/frontend
             gmj06/adservice
             gmj06/productcatalogservice
             gmj06/currencyservice
-            gmj06/frontend
           # generate Docker tags based on the following events/attributes
           tags: |
             type=sha
@@ -48,6 +48,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Build and push frontend image
+        uses: docker/build-push-action@v2
+        with:
+          context: src/frontend/
+          file: src/frontend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: Build and push productcatalogservice image
         uses: docker/build-push-action@v2
@@ -76,11 +85,4 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: Build and push frontend image
-        uses: docker/build-push-action@v2
-        with:
-          context: src/frontend/
-          file: src/frontend/Dockerfile
-          push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+      
