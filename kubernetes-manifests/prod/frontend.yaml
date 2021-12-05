@@ -42,7 +42,7 @@ spec:
           - name: CURRENCY_SERVICE_ADDR
             value: "currencyservice:7000"
           - name: AD_SERVICE_ADDR
-            value: "adservice:9556"
+            value: "adservice:9555"
           resources:
             requests:
               cpu: 100m
