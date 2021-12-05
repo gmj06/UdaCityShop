@@ -15,7 +15,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: gmj06/frontend:sha-68f1b4a
+          image: gmj06/frontend:sha-69cbea8
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -47,8 +47,8 @@ spec:
             value: "1"
           - name: DISABLE_PROFILER
             value: "1"
-          - name: DISABLE_DEBUGGER
-            value: "1"
+          # - name: DISABLE_DEBUGGER
+          #   value: "1"
           resources:
             requests:
               cpu: 100m
