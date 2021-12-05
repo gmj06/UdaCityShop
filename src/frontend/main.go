@@ -83,6 +83,9 @@ func main() {
 	}
 	log.Out = os.Stdout
 
+	os.Setenv("DISABLE_TRACING", 1)
+	os.Setenv("DISABLE_PRIFILER", 1)
+	
 	if os.Getenv("DISABLE_TRACING") == "" {
 		log.Info("Tracing enabled.")
 		go initTracing(log)
