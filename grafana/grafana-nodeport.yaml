@@ -4,10 +4,12 @@ metadata:
   name: grafana-nodeport
   namespace: monitoring
 spec:
-  ports:
-  - port: 80
-    targetPort: 3000
-    nodePort: 30030
-  selector:
-    app: grafana
   type: NodePort
+  selector:
+    app.kubernetes.io/instance: prometheus
+    app.kubernetes.io/name: grafana
+  ports:
+  - name: service
+    nodePort: 30030
+    port: 80
+    targetPort: 3000
