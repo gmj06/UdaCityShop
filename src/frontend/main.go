@@ -215,7 +215,7 @@ func initProfiling(log logrus.FieldLogger, service, version string) {
 			Service:        service,
 			ServiceVersion: version,
 			// ProjectID must be set if not running on GCP.
-			// ProjectID: "my-project",
+			ProjectID: "my-project",
 		}); err != nil {
 			log.Warnf("warn: failed to start profiler: %+v", err)
 		} else {
