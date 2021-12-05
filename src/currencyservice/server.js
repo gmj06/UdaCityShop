@@ -65,7 +65,7 @@ const healthProto = _loadProto(HEALTH_PROTO_PATH).grpc.health.v1;
 const logger = pino({
   name: 'currencyservice-server',
   messageKey: 'message',
-  changeLevelName: 'severity',
+  levelKey: 'severity',
   useLevelLabels: true
 });
 
