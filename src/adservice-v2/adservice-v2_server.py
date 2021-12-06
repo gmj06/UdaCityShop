@@ -42,7 +42,8 @@ class AdServiceV2(demo_pb2_grpc.ProductCatalogServiceServicer):
 
         # generating random product id(s) to display with text "AdV2 -  Items with 25% Discount!"
         random_product_ids =  random.choice(output.products, k=RANDOM_ADS_TO_SERVE)
-        random_ads = [demo_pb2.Ad(redirect_url="/product/{}".format(p.id), text="AdV2 -  Items with 25% discount!") for p in random_product_ids]
+        display_text = "AdV2 -  Items with 25% Discount!"
+        random_ads = [demo_pb2.Ad(redirect_url="/product/{}".format(p.id), text=display_text) for p in random_product_ids]
         return demo_pb2.AdResponse(ads=random_ads)
 
 
@@ -51,11 +52,10 @@ if __name__ == "__main__":
 
   
     # create gRPC server, add the Ad-v2 service and start it
-    server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server(futures.ThreadPoolExecutor(max_workers=200))
     # Uncomment to add the HealthChecks to the gRPC server to the Ad-v2 service
     health_pb2_grpc.add_HealthServicer_to_server(AdServiceV2(), server)
-    demo_pb2_grpc.add_AdServiceServicer_to_server(
-        AdServiceV2(), server)
+    demo_pb2_grpc.add_AdServiceV2Servicer_to_server(AdServiceV2(), server)
     print("gRPC Server starting on port 9556...")
     server.add_insecure_port('[::]:9556')
     server.start()
