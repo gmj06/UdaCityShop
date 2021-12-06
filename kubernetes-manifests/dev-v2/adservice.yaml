@@ -16,12 +16,12 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gmj06/adservice-v2:sha-d3c2ffc
+        image: gmj06/adservice-v2:sha-4154100
         ports:
         - containerPort: 9556
         env:
         - name: PORT
-          value: "9555"
+          value: "9556"
         - name: DISABLE_TRACING
           value: "1"
         - name: DISABLE_PROFILER
