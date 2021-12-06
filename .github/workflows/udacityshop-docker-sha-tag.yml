@@ -81,6 +81,21 @@ jobs:
           file: src/adservice/Dockerfile
           push: true
           tags: ${{ steps.meta-adservice.outputs.tags }}
+
+      - name: Docker meta
+        id: meta-adservicev2
+        uses: docker/metadata-action@v3
+        with:
+          images: gmj06/adservice-v2
+          tags: type=sha
+
+      - name: Build and push adservicev2 image
+        uses: docker/build-push-action@v2
+        with:
+          context: src/adservice-v2/
+          file: src/adservice-v2/Dockerfile
+          push: true
+          tags: ${{ steps.meta-adservicev2.outputs.tags }}
          
       - name: Docker meta
         id: meta-currencyservice
