@@ -16,10 +16,10 @@ if __name__ == "__main__":
 
     
     # form a request with the required input
-    ad_request = demo_pb2.AdRequest(context_keys="antique")
+    ad_request = demo_pb2.AdRequest(context_keys="test")
 
    
     # make a call to server and return a response
-    response = stub.DisplayAds(ad_request)
+    response = stub.Ads(ad_request)
     # Uncomment to log the resoinse from the Server
     logger.info(response)

@@ -35,7 +35,7 @@ class AdServiceV2(demo_pb2_grpc.ProductCatalogServiceServicer):
         return health_pb2.HealthCheckResponse(
             status=health_pb2.HealthCheckResponse.UNIMPLEMENTED)
 
-    def DisplayAds(self, request, context):
+    def Ads(self, request, context):
         channel =  grpc.insecure_channel("productcatalogservice:3550")
         stub = demo_pb2_grpc.ProductCatalogServiceStub(channel)
         output = stub.ListProducts(demo_pb2.Empty())

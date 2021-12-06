@@ -16,7 +16,7 @@
 
 #!/bin/bash -e
 
-PATH=$PATH:$GOPATH/bin
+PATH=$PATH:$HOME/go/bin
 protodir=../../pb
 
 
