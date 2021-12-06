@@ -15,7 +15,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: gmj06/frontend:sha-82bd260
+          image: gmj06/frontend:sha-c1be0eb
           ports:
           - containerPort: 8080
           readinessProbe:
@@ -42,7 +42,7 @@ spec:
           - name: CURRENCY_SERVICE_ADDR
             value: "currencyservice:7000"
           - name: AD_SERVICE_ADDR
-            value: "adservice:9555"
+            value: "adservice:9556"
           - name: DISABLE_TRACING
             value: "1"
           - name: DISABLE_PROFILER
