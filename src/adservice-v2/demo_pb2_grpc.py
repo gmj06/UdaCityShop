@@ -303,7 +303,7 @@ class AdService(object):
 
 
 class AdServiceV2Stub(object):
-    """------------Ad service V2------------------
+    """------ Ad service v2--------
 
     """
 
@@ -313,19 +313,19 @@ class AdServiceV2Stub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetAdsV2 = channel.unary_unary(
-                '/hipstershop.AdServiceV2/GetAdsV2',
+        self.GetAds = channel.unary_unary(
+                '/hipstershop.AdServiceV2/GetAds',
                 request_serializer=demo__pb2.AdRequest.SerializeToString,
                 response_deserializer=demo__pb2.AdResponse.FromString,
                 )
 
 
 class AdServiceV2Servicer(object):
-    """------------Ad service V2------------------
+    """------ Ad service v2--------
 
     """
 
-    def GetAdsV2(self, request, context):
+    def GetAds(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -334,8 +334,8 @@ class AdServiceV2Servicer(object):
 
 def add_AdServiceV2Servicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetAdsV2': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAdsV2,
+            'GetAds': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAds,
                     request_deserializer=demo__pb2.AdRequest.FromString,
                     response_serializer=demo__pb2.AdResponse.SerializeToString,
             ),
@@ -347,12 +347,12 @@ def add_AdServiceV2Servicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class AdServiceV2(object):
-    """------------Ad service V2------------------
+    """------ Ad service v2--------
 
     """
 
     @staticmethod
-    def GetAdsV2(request,
+    def GetAds(request,
             target,
             options=(),
             channel_credentials=None,
@@ -362,7 +362,7 @@ class AdServiceV2(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/hipstershop.AdServiceV2/GetAdsV2',
+        return grpc.experimental.unary_unary(request, target, '/hipstershop.AdServiceV2/GetAds',
             demo__pb2.AdRequest.SerializeToString,
             demo__pb2.AdResponse.FromString,
             options, channel_credentials,

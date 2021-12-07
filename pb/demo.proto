@@ -116,8 +116,10 @@ message Ad {
     string text = 2;
 }
 
-// ------------Ad service V2------------------
+
+//------ Ad service v2--------
 
 service AdServiceV2 {
-    rpc GetAdsV2(AdRequest) returns (AdResponse) {}
+    rpc GetAds(AdRequest) returns (AdResponse) {}
+
 }
