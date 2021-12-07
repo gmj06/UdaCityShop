@@ -303,7 +303,7 @@ class AdService(object):
 
 
 class AdServiceV2Stub(object):
-    """------ Ad service v2--------
+    """------------Ad service V2------------------
 
     """
 
@@ -321,7 +321,7 @@ class AdServiceV2Stub(object):
 
 
 class AdServiceV2Servicer(object):
-    """------ Ad service v2--------
+    """------------Ad service V2------------------
 
     """
 
@@ -347,7 +347,7 @@ def add_AdServiceV2Servicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class AdServiceV2(object):
-    """------ Ad service v2--------
+    """------------Ad service V2------------------
 
     """
 
