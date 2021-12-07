@@ -69,7 +69,7 @@ func (fe *frontendServer) getAd(ctx context.Context, ctxKeys []string) ([]*pb.Ad
 	defer cancel()
 
 	// Referring new AdServiceV2
-	resp, err := pb.NewAdServiceV2Client(fe.adSvcConn).GetAdsV2(ctx, &pb.AdRequest{
+	resp, err := pb.NewAdServiceV2Client(fe.adSvcConn).GetAds(ctx, &pb.AdRequest{
 		ContextKeys: ctxKeys,
 	})
 	return resp.GetAds(), errors.Wrap(err, "failed to get ads")
