@@ -22,4 +22,5 @@ protodir=../../pb
 
 # protoc --go_out=plugins=grpc:genproto -I $protodir $protodir/demo.proto
 # --go-grpc_out=genproto
-protoc --go_out=plugins=grpc:genproto  -I $protodir $protodir/demo.proto
+#protoc --go_out=plugins=grpc:genproto  -I $protodir $protodir/demo.proto
+protoc --go-grpc_out=genproto  -I $protodir $protodir/demo.proto
