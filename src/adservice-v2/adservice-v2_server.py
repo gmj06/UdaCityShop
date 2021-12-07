@@ -24,17 +24,6 @@ RANDOM_ADS_TO_SERVE = 2
 class AdServiceV2(demo_pb2_grpc.ProductCatalogServiceServicer):
     
     # Implemet the Ad service business logic
-
-    # Uncomment to enable the HealthChecks for the Ad service
-    # Note: These are needed for the liveness and readiness probes
-    def Check(self, request, context):
-        return health_pb2.HealthCheckResponse(
-            status=health_pb2.HealthCheckResponse.SERVING)
-    
-    def Watch(self, request, context):
-        return health_pb2.HealthCheckResponse(
-            status=health_pb2.HealthCheckResponse.UNIMPLEMENTED)
-
     def Ads(self, request, context):
         channel =  grpc.insecure_channel("productcatalogservice:3550")
         stub = demo_pb2_grpc.ProductCatalogServiceStub(channel)
@@ -46,6 +35,17 @@ class AdServiceV2(demo_pb2_grpc.ProductCatalogServiceServicer):
         random_ads = [demo_pb2.Ad(redirect_url="/product/{}".format(p.id), text=display_text) for p in random_product_ids]
         return demo_pb2.AdResponse(ads=random_ads)
 
+    # Uncomment to enable the HealthChecks for the Ad service
+    # Note: These are needed for the liveness and readiness probes
+    def Check(self, request, context):
+        return health_pb2.HealthCheckResponse(
+            status=health_pb2.HealthCheckResponse.SERVING)
+    
+    def Watch(self, request, context):
+        return health_pb2.HealthCheckResponse(
+            status=health_pb2.HealthCheckResponse.UNIMPLEMENTED)
+
+    
 
 if __name__ == "__main__":
     logger.info("initializing adservice-v2")
