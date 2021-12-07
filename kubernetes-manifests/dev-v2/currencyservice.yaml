@@ -16,7 +16,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gmj06/currencyservice:sha-d82af84
+        image: gmj06/currencyservice:sha-4f22c3d
         ports:
         - name: grpc
           containerPort: 7000
