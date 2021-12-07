@@ -313,8 +313,8 @@ class AdServiceV2Stub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetAds = channel.unary_unary(
-                '/hipstershop.AdServiceV2/GetAds',
+        self.GetAdsV2 = channel.unary_unary(
+                '/hipstershop.AdServiceV2/GetAdsV2',
                 request_serializer=demo__pb2.AdRequest.SerializeToString,
                 response_deserializer=demo__pb2.AdResponse.FromString,
                 )
@@ -325,7 +325,7 @@ class AdServiceV2Servicer(object):
 
     """
 
-    def GetAds(self, request, context):
+    def GetAdsV2(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -334,8 +334,8 @@ class AdServiceV2Servicer(object):
 
 def add_AdServiceV2Servicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetAds': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetAds,
+            'GetAdsV2': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAdsV2,
                     request_deserializer=demo__pb2.AdRequest.FromString,
                     response_serializer=demo__pb2.AdResponse.SerializeToString,
             ),
@@ -352,7 +352,7 @@ class AdServiceV2(object):
     """
 
     @staticmethod
-    def GetAds(request,
+    def GetAdsV2(request,
             target,
             options=(),
             channel_credentials=None,
@@ -362,7 +362,7 @@ class AdServiceV2(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/hipstershop.AdServiceV2/GetAds',
+        return grpc.experimental.unary_unary(request, target, '/hipstershop.AdServiceV2/GetAdsV2',
             demo__pb2.AdRequest.SerializeToString,
             demo__pb2.AdResponse.FromString,
             options, channel_credentials,

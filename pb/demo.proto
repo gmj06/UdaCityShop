@@ -119,5 +119,5 @@ message Ad {
 // ------------Ad service V2------------------
 
 service AdServiceV2 {
-    rpc GetAds(AdRequest) returns (AdResponse) {}
+    rpc GetAdsV2(AdRequest) returns (AdResponse) {}
 }
