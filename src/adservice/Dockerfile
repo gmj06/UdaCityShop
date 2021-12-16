@@ -41,7 +41,9 @@ RUN GRPC_HEALTH_PROBE_VERSION=v0.3.6 && \
     chmod +x /bin/grpc_health_probe
 
 WORKDIR /app
+
 COPY --from=builder /app .
 
 EXPOSE 9555
+
 ENTRYPOINT ["/app/build/install/hipstershop/bin/AdService"]
