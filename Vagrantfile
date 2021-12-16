@@ -43,14 +43,20 @@ Vagrant.configure("2") do |config|
     # install protoc
     #sudo curl -O https://github.com/protocolbuffers/protobuf/releases/download/v3.19.1/protoc-3.19.1-linux-x86_64.zip
     #sudo unzip protoc-3.19.1-linux-x86_64.zip
+<<<<<<< HEAD
     sudo cp /vagrant/protoc-3.19.1-linux-x86_64/bin/protoc  /usr/bin
     sudo cp /vagrant/protoc-3.19.1-linux-x86_64/include  /usr/local/
+=======
+    sudo cp -r /vagrant/protoc-3.19.1-linux-x86_64/bin/protoc  /usr/bin
+    sudo cp -r /vagrant/protoc-3.19.1-linux-x86_64/include  /usr/local/
+>>>>>>> feb883b121005c30c9f223701dd241bb8df0c702
     sudo echo 'export PATH=$PATH:/usr/bin/protoc' >> ~/.profile
     chmod a+x /usr/bin/protoc
     export PATH=$PATH:/usr/bin/protoc
     protoc --version
 
     # install protoc-gen-go
+<<<<<<< HEAD
     sudo go install github.com/golang/protobuf/protoc-gen-go@latest
     chmod a+x $HOME/go/bin
     sudo echo 'export PATH=$PATH:$HOME/go/bin/protoc-gen-go' >> ~/.profile
@@ -60,6 +66,17 @@ Vagrant.configure("2") do |config|
     export GOROOT=/usr/local/go
     export PATH=$PATH:$GOPATH/bin
     export PATH=$PATH:$GOROOT/bin
+=======
+    go install github.com/golang/protobuf/protoc-gen-go@latest
+    #chmod a+x $HOME/go/bin
+    sudo echo 'export PATH=$PATH:$HOME/go/bin/protoc-gen-go' >> ~/.profile
+    export PATH=$PATH:$HOME/go/bin/protoc-gen-go
+
+    # export GOPATH=$HOME/go
+    # export GOROOT=/usr/local/go
+    # export PATH=$PATH:$GOPATH/bin
+    # export PATH=$PATH:$GOROOT/bin
+>>>>>>> feb883b121005c30c9f223701dd241bb8df0c702
 
   SHELL
 end
