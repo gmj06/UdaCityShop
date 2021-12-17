@@ -13,4 +13,3 @@ spec:
     repoURL: https://github.com/gmj06/UdaCityShop
     targetRevision: HEAD
   syncPolicy: {}
-    

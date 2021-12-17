@@ -16,8 +16,6 @@ syntax = "proto3";
 
 package hipstershop;
 
-option go_package="hipstershop/";
-
 message Empty {}
 
 

@@ -20,7 +20,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            gmj06/adservice-v2
+            gmj06/adservice-v22
             gmj06/currencyservice
             gmj06/frontend
             gmj06/productcatalogservice

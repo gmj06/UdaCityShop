@@ -16,13 +16,9 @@ FROM node:12-alpine as base
 
 FROM base as builder
 
-#FROM python:3.7-alpine
-
 # Some packages (e.g. @google-cloud/profiler) require additional
 # deps for post-install scripts
-RUN apk update
 RUN apk add --update --no-cache \
-    #curl py-pip \
     python3 \
     make \
     g++
@@ -32,7 +28,6 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install --only=production
-
 
 FROM base
 

@@ -15,11 +15,11 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: gmj06/frontend:sha-76b84b1
+          image: gmj06/frontend:sha-8980db7
           ports:
           - containerPort: 8080
           readinessProbe:
-            initialDelaySeconds: 20
+            initialDelaySeconds: 10
             httpGet:
               path: "/_healthz"
               port: 8080
@@ -27,7 +27,7 @@ spec:
               - name: "Cookie"
                 value: "shop_session-id=x-readiness-probe"
           livenessProbe:
-            initialDelaySeconds: 20
+            initialDelaySeconds: 10
             httpGet:
               path: "/_healthz"
               port: 8080
@@ -43,12 +43,6 @@ spec:
             value: "currencyservice:7000"
           - name: AD_SERVICE_ADDR
             value: "adservice:9556"
-          - name: DISABLE_TRACING
-            value: "1"
-          - name: DISABLE_PROFILER
-            value: "1"
-          - name: DISABLE_DEBUGGER
-            value: "1"
           resources:
             requests:
               cpu: 100m
