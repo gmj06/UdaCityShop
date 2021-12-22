@@ -7,7 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.box = "opensuse/Leap-15.2.x86_64"
 
   # st the static IP for the vagrant box
-  config.vm.network "private_network", ip: "192.168.56.102"
+  config.vm.network "private_network", ip: "192.168.56.4"
 
   # consifure the parameters for VirtualBox provider
   config.vm.provider "virtualbox" do |vb|
