@@ -1,9 +1,9 @@
 ## This file contains the observations of Ad service refactoring
 
 Java Ad service:
-    CPU: {{ insert value }}
-    memory: {{ insert value }}
+    CPU: 350
+    memory: 120000000
 
 Python Ad service:
-    CPU: {{ insert value }}
-    memory: {{ insert value }}
+    CPU: 4.97
+    memory: 27500000
